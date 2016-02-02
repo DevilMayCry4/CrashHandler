@@ -675,7 +675,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AEW-BV-6IS" customClass="DragView">
-                                <rect key="frame" x="0.0" y="95" width="243" height="175"/>
+                                <rect key="frame" x="237" y="95" width="243" height="175"/>
                                 <subviews>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wNH-GO-XYI">
                                         <rect key="frame" x="55" y="75" width="92" height="34"/>
@@ -720,7 +720,7 @@
                                 </scroller>
                             </scrollView>
                             <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4yX-SA-oJ9">
-                                <rect key="frame" x="0.0" y="0.0" width="243" height="98"/>
+                                <rect key="frame" x="240" y="11" width="243" height="98"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K9h-Ty-g6F">
                                         <rect key="frame" x="73" y="53" width="113" height="19"/>
@@ -741,26 +741,93 @@
                                     <constraint firstItem="K9h-Ty-g6F" firstAttribute="centerY" secondItem="4yX-SA-oJ9" secondAttribute="centerY" id="ogd-m2-y62"/>
                                 </constraints>
                             </customView>
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbl-bR-Nix">
+                                <rect key="frame" x="0.0" y="41" width="240" height="229"/>
+                                <clipView key="contentView" id="GQZ-fe-lCL">
+                                    <rect key="frame" x="1" y="23" width="238" height="205"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="xSk-xF-w1b" id="t13-JY-lvr">
+                                            <rect key="frame" x="0.0" y="0.0" width="238" height="205"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <size key="intercellSpacing" width="3" height="2"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                            <tableColumns>
+                                                <tableColumn identifier="" width="187.54296875" minWidth="10" maxWidth="3.4028234663852886e+38" id="W7E-ic-ngc">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    </tableHeaderCell>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="tXT-5z-DqQ">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                </tableColumn>
+                                            </tableColumns>
+                                        </tableView>
+                                    </subviews>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="PFP-Tf-ZqW">
+                                    <rect key="frame" x="1" y="119" width="223" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="v6D-xW-VPB">
+                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <tableHeaderView key="headerView" id="xSk-xF-w1b">
+                                    <rect key="frame" x="0.0" y="0.0" width="238" height="23"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableHeaderView>
+                            </scrollView>
+                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bad-CG-sNv">
+                                <rect key="frame" x="53" y="4" width="92" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="l0c-Zq-VNW"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="重新解析" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SQL-i2-4xW">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="onRightButtonClick:" target="XfG-lQ-9wD" id="Wo4-l2-q1b"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="4yX-SA-oJ9" secondAttribute="bottom" id="34D-ZL-3Pp"/>
                             <constraint firstItem="4yX-SA-oJ9" firstAttribute="top" secondItem="AEW-BV-6IS" secondAttribute="bottom" id="57Y-em-NaP"/>
+                            <constraint firstAttribute="bottom" secondItem="lbl-bR-Nix" secondAttribute="bottom" constant="41" id="5Mk-mO-n7l"/>
                             <constraint firstItem="jTl-i9-3h7" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="9vK-0T-df8"/>
+                            <constraint firstItem="Bad-CG-sNv" firstAttribute="centerX" secondItem="t13-JY-lvr" secondAttribute="centerX" id="Eg5-JU-2x0"/>
                             <constraint firstItem="AEW-BV-6IS" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="JzY-Mo-BEq"/>
                             <constraint firstItem="AEW-BV-6IS" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="QpG-LR-rdj"/>
+                            <constraint firstItem="lbl-bR-Nix" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="T6M-qJ-1cI"/>
                             <constraint firstAttribute="trailing" secondItem="jTl-i9-3h7" secondAttribute="trailing" id="UXC-fP-Ftj"/>
                             <constraint firstAttribute="bottom" secondItem="jTl-i9-3h7" secondAttribute="bottom" id="Zsr-7s-Pik"/>
                             <constraint firstItem="jTl-i9-3h7" firstAttribute="width" secondItem="m2S-Jp-Qdl" secondAttribute="width" multiplier="0.5" id="a0u-fT-zso"/>
                             <constraint firstItem="AEW-BV-6IS" firstAttribute="width" secondItem="m2S-Jp-Qdl" secondAttribute="width" multiplier="0.5" id="cH6-SF-VJs"/>
                             <constraint firstItem="4yX-SA-oJ9" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="dht-RQ-Yho"/>
+                            <constraint firstItem="lbl-bR-Nix" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="egH-Af-Lgh"/>
                             <constraint firstItem="Oaa-AM-wMv" firstAttribute="leading" secondItem="4yX-SA-oJ9" secondAttribute="trailing" id="hws-Xl-gaC"/>
+                            <constraint firstAttribute="bottom" secondItem="Bad-CG-sNv" secondAttribute="bottom" constant="11" id="mP9-sE-ORY"/>
                             <constraint firstItem="AEW-BV-6IS" firstAttribute="height" secondItem="m2S-Jp-Qdl" secondAttribute="height" multiplier="0.5" id="nOA-OZ-qH1"/>
+                            <constraint firstItem="lbl-bR-Nix" firstAttribute="width" secondItem="m2S-Jp-Qdl" secondAttribute="width" multiplier="0.5" id="rOY-VW-7nB"/>
+                            <constraint firstItem="lbl-bR-Nix" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="uxX-KL-pzQ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="TextView" destination="jTl-i9-3h7" id="dEz-zV-FLk"/>
                         <outlet property="contentView" destination="AEW-BV-6IS" id="N8G-e0-J8G"/>
                         <outlet property="parserButton" destination="K9h-Ty-g6F" id="CSn-f0-Kcf"/>
+                        <outlet property="reloadButton" destination="Bad-CG-sNv" id="pkK-ua-a5V"/>
+                        <outlet property="tableConentView" destination="lbl-bR-Nix" id="gER-0d-6Iu"/>
+                        <outlet property="tableView" destination="t13-JY-lvr" id="GPw-Kd-Vnl"/>
                         <outlet property="textView" destination="Oaa-AM-wMv" id="aaz-1G-9QR"/>
                     </connections>
                 </viewController>

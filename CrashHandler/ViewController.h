@@ -17,6 +17,10 @@
 @property (weak) IBOutlet DragView *contentView;
 @property (strong) IBOutlet NSTextView *textView;
 @property (weak) IBOutlet NSButton *parserButton;
+@property (weak) IBOutlet NSTableView *tableView;
+@property (weak) IBOutlet NSScrollView *tableConentView;
+
+@property (weak) IBOutlet NSButton *reloadButton;
 
 @end
 

@@ -78,10 +78,27 @@
 
 @end
 
+@interface ViewController ()<NSTableViewDataSource,NSTableViewDelegate>
+
+@end
+
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSTableColumn *column = [self.tableView.tableColumns firstObject];
+    column.headerCell.stringValue = @"解析文件路径";
+    [column setWidth:1000];
+    NSMenu *theMenu = [[NSMenu alloc] initWithTitle:@"Contextual Menu"];
+    [theMenu insertItemWithTitle:@"在右侧打开" action:@selector(openMenu) keyEquivalent:@"" atIndex:0];
+    [theMenu insertItemWithTitle:@"在finder中打开" action:@selector(openFileAtFinder) keyEquivalent:@"" atIndex:1];
+    self.tableView.menu = theMenu;
+    self.tableConentView.hidden = YES;
+    self.reloadButton.hidden = YES;
+    self.tableView.rowHeight = 30;
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+
     self.textView.editable = NO;
     self.contentView.didSelectedFile = ^(NSArray *files){
         NSMutableArray *crashFiles = [NSMutableArray array];
@@ -101,13 +118,35 @@
              _files = crashFiles;
             self.textView.string = string;
         }
+        else
+        {
+
+            NSError *error = [NSError errorWithDomain:@"t" code:111 userInfo:@{NSLocalizedDescriptionKey:@"没有找到.crash文件"}];
+            NSAlert *alert = [NSAlert alertWithError:error];
+            [alert runModal];
+        }
     };
+}
+
+- (void)openMenu
+{
+    NSString *path = [self getCrashParsePath:_files[self.tableView.clickedRow]];
+    NSString *string = [[NSString alloc] initWithData:[NSData dataWithContentsOfFile:path] encoding:NSUTF8StringEncoding];
+    self.textView.string = string;
+}
+
+- (void)openFileAtFinder
+{
+    NSString *path = [self getCrashParsePath:_files[self.tableView.clickedRow]];
+    NSArray *fileURLs = [NSArray arrayWithObjects:[NSURL fileURLWithPath:path], /* ... */ nil];
+    [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:fileURLs];
 }
 
 - (IBAction)onOpen:(id)sender
 {
     if (_files.count)
     {
+        [self.tableView reloadData];
         NSOpenPanel* panel = [NSOpenPanel openPanel];
         panel.canChooseDirectories = YES;
         panel.canChooseFiles = NO;
@@ -132,16 +171,15 @@
                     for (NSInteger i = 0; i < _files.count; i++)
                     {
                         NSString *file = _files[i];
-                        NSString *name = [[file lastPathComponent] stringByDeletingPathExtension];
-                        [self parseCrashFile:file savePath:[_saveDir stringByAppendingPathComponent:[NSString stringWithFormat:@"%@__parse.txt",name]]];
+                        [self parseCrashFile:file savePath:[self getCrashParsePath:file]];
                         CGFloat progress = i*1./_files.count;
                         dispatch_async(dispatch_get_main_queue(), ^{
                             HUD.progress = progress;
                             if (i == _files.count - 1)
                             {
                                 [HUD hide:YES afterDelay:1];
-                                self.contentView.hidden = NO;
-                                self.parserButton.hidden = NO;
+                                self.tableConentView.hidden = NO;
+                                self.reloadButton.hidden = NO;
                             }
                             
                         });
@@ -155,6 +193,14 @@
     
 }
 
+- (IBAction)onRightButtonClick:(id)sender
+{
+    self.tableConentView.hidden = YES;
+    self.reloadButton.hidden = YES;
+    self.contentView.hidden = NO;
+    self.parserButton.hidden = NO;
+}
+
 - (void)parseCrashFile:(NSString *)crashFile savePath:(NSString *)savePath
 {
     NSString *launchPad = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/symbolicatecrash.pl"];
@@ -166,6 +212,49 @@
         [symbolicateTask launch];
         [symbolicateTask waitUntilExit];
     }
+}
+
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
+{
+    return _files.count;
+}
+
+- (void)onDoubleTap:(NSTableView *)tableView
+{
+    NSString *path = [self getCrashParsePath:_files[tableView.selectedRow]];
+    NSString *string = [[NSString alloc] initWithData:[NSData dataWithContentsOfFile:path] encoding:NSUTF8StringEncoding];
+    self.textView.string = string;
+}
+
+- (nullable NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(nullable NSTableColumn *)tableColumn row:(NSInteger)row
+{
+
+    NSTextField *cell = [tableView makeViewWithIdentifier:@"MyView" owner:self];
+    
+    // There is no existing cell to reuse so create a new one
+    if (cell == nil) {
+        
+        // Create the new NSTextField with a frame of the {0,0} with the width of the table.
+        // Note that the height of the frame is not really relevant, because the row height will modify the height.
+        cell = [[NSTextField alloc] initWithFrame:CGRectZero];
+        cell.autoresizingMask = NSViewAutoresizingFlexibleWidth;
+        // The identifier of the NSTextField instance is set to MyView.
+        // This allows the cell to be reused.
+        cell.identifier = @"MyView";
+    }
+    cell.stringValue = [self getCrashParsePath:_files[row]];
+    // result is now guaranteed to be valid, either as a reused cell
+    // or as a new cell, so set the stringValue of the cell to the
+    // nameArray value at row
+    
+    // Return the result
+    return cell;
+}
+
+- (NSString *)getCrashParsePath:(NSString *)crashPath
+{
+    NSString *name = [[crashPath lastPathComponent] stringByDeletingPathExtension];
+    return [_saveDir stringByAppendingPathComponent:[NSString stringWithFormat:@"%@__parse.txt",name]];
 }
 
 - (void)setRepresentedObject:(id)representedObject {
