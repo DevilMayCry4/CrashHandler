@@ -18,6 +18,7 @@
 		C555B0671C5F4DC1004236C1 /* StandardPaths.m in Sources */ = {isa = PBXBuildFile; fileRef = C555B0621C5F4DC1004236C1 /* StandardPaths.m */; };
 		C555B0681C5F4DC1004236C1 /* symbolicatecrash.pl in Resources */ = {isa = PBXBuildFile; fileRef = C555B0631C5F4DC1004236C1 /* symbolicatecrash.pl */; };
 		C5EE918D1C604FCD00B52243 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C5EE918B1C604FCD00B52243 /* MBProgressHUD.m */; };
+		C5EE91961C60986000B52243 /* TableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5EE91951C60986000B52243 /* TableCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,8 @@
 		C555B0631C5F4DC1004236C1 /* symbolicatecrash.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; path = symbolicatecrash.pl; sourceTree = "<group>"; };
 		C5EE918B1C604FCD00B52243 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		C5EE918C1C604FCD00B52243 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		C5EE91941C60986000B52243 /* TableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCell.h; sourceTree = "<group>"; };
+		C5EE91951C60986000B52243 /* TableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +85,8 @@
 				C555B0531C5F48EB004236C1 /* Main.storyboard */,
 				C555B0561C5F48EB004236C1 /* Info.plist */,
 				C555B04B1C5F48EB004236C1 /* Supporting Files */,
+				C5EE91941C60986000B52243 /* TableCell.h */,
+				C5EE91951C60986000B52243 /* TableCell.m */,
 			);
 			path = CrashHandler;
 			sourceTree = "<group>";
@@ -184,6 +189,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5EE91961C60986000B52243 /* TableCell.m in Sources */,
 				C555B0641C5F4DC1004236C1 /* LICENCE.md in Sources */,
 				C555B0501C5F48EB004236C1 /* ViewController.m in Sources */,
 				C555B0651C5F4DC1004236C1 /* README.md in Sources */,

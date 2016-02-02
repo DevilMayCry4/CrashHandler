@@ -741,6 +741,19 @@
                                     <constraint firstItem="K9h-Ty-g6F" firstAttribute="centerY" secondItem="4yX-SA-oJ9" secondAttribute="centerY" id="ogd-m2-y62"/>
                                 </constraints>
                             </customView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bad-CG-sNv">
+                                <rect key="frame" x="74" y="4" width="92" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="l0c-Zq-VNW"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="重新解析" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SQL-i2-4xW">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="onRightButtonClick:" target="XfG-lQ-9wD" id="Wo4-l2-q1b"/>
+                                </connections>
+                            </button>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbl-bR-Nix">
                                 <rect key="frame" x="0.0" y="41" width="240" height="229"/>
                                 <clipView key="contentView" id="GQZ-fe-lCL">
@@ -785,26 +798,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
-                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bad-CG-sNv">
-                                <rect key="frame" x="53" y="4" width="92" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="l0c-Zq-VNW"/>
-                                </constraints>
-                                <buttonCell key="cell" type="push" title="重新解析" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SQL-i2-4xW">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="onRightButtonClick:" target="XfG-lQ-9wD" id="Wo4-l2-q1b"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="4yX-SA-oJ9" secondAttribute="bottom" id="34D-ZL-3Pp"/>
                             <constraint firstItem="4yX-SA-oJ9" firstAttribute="top" secondItem="AEW-BV-6IS" secondAttribute="bottom" id="57Y-em-NaP"/>
                             <constraint firstAttribute="bottom" secondItem="lbl-bR-Nix" secondAttribute="bottom" constant="41" id="5Mk-mO-n7l"/>
                             <constraint firstItem="jTl-i9-3h7" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="9vK-0T-df8"/>
-                            <constraint firstItem="Bad-CG-sNv" firstAttribute="centerX" secondItem="t13-JY-lvr" secondAttribute="centerX" id="Eg5-JU-2x0"/>
+                            <constraint firstItem="Bad-CG-sNv" firstAttribute="centerX" secondItem="t13-JY-lvr" secondAttribute="centerX" priority="750" id="Eg5-JU-2x0"/>
                             <constraint firstItem="AEW-BV-6IS" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="JzY-Mo-BEq"/>
                             <constraint firstItem="AEW-BV-6IS" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="QpG-LR-rdj"/>
                             <constraint firstItem="lbl-bR-Nix" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="T6M-qJ-1cI"/>
@@ -818,7 +818,6 @@
                             <constraint firstAttribute="bottom" secondItem="Bad-CG-sNv" secondAttribute="bottom" constant="11" id="mP9-sE-ORY"/>
                             <constraint firstItem="AEW-BV-6IS" firstAttribute="height" secondItem="m2S-Jp-Qdl" secondAttribute="height" multiplier="0.5" id="nOA-OZ-qH1"/>
                             <constraint firstItem="lbl-bR-Nix" firstAttribute="width" secondItem="m2S-Jp-Qdl" secondAttribute="width" multiplier="0.5" id="rOY-VW-7nB"/>
-                            <constraint firstItem="lbl-bR-Nix" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="uxX-KL-pzQ"/>
                         </constraints>
                     </view>
                     <connections>

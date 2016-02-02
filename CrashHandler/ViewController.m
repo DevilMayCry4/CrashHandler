@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "StandardPaths.h"
 #import "MBProgressHUD.h"
+#import "TableCell.h"
 
 @interface DragView : NSView
 
@@ -93,7 +94,7 @@
     [theMenu insertItemWithTitle:@"在右侧打开" action:@selector(openMenu) keyEquivalent:@"" atIndex:0];
     [theMenu insertItemWithTitle:@"在finder中打开" action:@selector(openFileAtFinder) keyEquivalent:@"" atIndex:1];
     self.tableView.menu = theMenu;
-    self.tableConentView.hidden = YES;
+     self.tableConentView.hidden = YES;
     self.reloadButton.hidden = YES;
     self.tableView.rowHeight = 30;
     self.tableView.dataSource = self;
@@ -229,14 +230,14 @@
 - (nullable NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(nullable NSTableColumn *)tableColumn row:(NSInteger)row
 {
 
-    NSTextField *cell = [tableView makeViewWithIdentifier:@"MyView" owner:self];
+    TableCell *cell = [tableView makeViewWithIdentifier:@"MyView" owner:self];
     
     // There is no existing cell to reuse so create a new one
     if (cell == nil) {
         
         // Create the new NSTextField with a frame of the {0,0} with the width of the table.
         // Note that the height of the frame is not really relevant, because the row height will modify the height.
-        cell = [[NSTextField alloc] initWithFrame:CGRectZero];
+        cell = [[TableCell alloc] initWithFrame:CGRectZero];
         cell.autoresizingMask = NSViewAutoresizingFlexibleWidth;
         // The identifier of the NSTextField instance is set to MyView.
         // This allows the cell to be reused.
