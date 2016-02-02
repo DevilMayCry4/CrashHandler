@@ -723,13 +723,13 @@
                                 <rect key="frame" x="240" y="11" width="243" height="98"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K9h-Ty-g6F">
-                                        <rect key="frame" x="73" y="53" width="113" height="19"/>
+                                        <rect key="frame" x="73" y="40" width="113" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="113" id="Kxe-2X-E7x"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="roundRect" title="解析" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9fC-3H-8La">
+                                        <buttonCell key="cell" type="push" title="解析到" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9fC-3H-8La">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" size="12" name=".PingFangSC-Regular"/>
+                                            <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="onOpen:" target="XfG-lQ-9wD" id="fRm-7r-dR6"/>
